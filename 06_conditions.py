@@ -1,9 +1,20 @@
 if __name__ == '__main__':
     name = input("Enter value")
     class_name = input("Enter class name")
-    score = int(input("Enter score"))
+    score = input("Enter score")
     
-    score_percentage = (score/100) * 100
+    if name == '':
+        print("Some Entry is not fill in!")
+        
+    if class_name == '':
+        print("Some Entry is not fill in!")
+    
+    score_percentage = 0
+    if score == '':
+        print("Some Entry is not fill in!")
+    else:
+        score = int(score)
+        score_percentage = (score/100) * 100
     
     if score >= 80:
         grade = 'A'
@@ -18,4 +29,3 @@ if __name__ == '__main__':
     
     headers = ['Name', 'Student ID', 'Score', 'Grade']
     gui_detail = []
-    
