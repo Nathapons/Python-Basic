@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import ttk, Tk, Frame, Button, Label, Entry 
 from tkinter import messagebox as msb
 
 
@@ -11,8 +11,12 @@ class StudentGradeWinow(StudentProgram):
     def __init__(self):
         self.__default_topics_font = ('Arial', 30)
         self.__defaul_detail_font = ('Arial', 22)
+        self.__default_treeview_header = ('Arial', 16, 'bold')
+        self.__default_treeview = ('Arial', 12)
+        self.__treeview_height = 11
         
         self.__program_name = 'Student Grade Program'
+        
         self.__entries = []
         
     @staticmethod
@@ -20,7 +24,7 @@ class StudentGradeWinow(StudentProgram):
         return [
             {'label': {'title': "Name:", 'font': ('Arial', 22), 'width': 15}, 'entry': {'justify': 'center', 'width': 15, 'font': ('Arial', 22)}},
             {'label': {'title': "Student Id:", 'font': ('Arial', 22), 'width': 15}, 'entry': {'justify': 'center', 'width': 15, 'font': ('Arial', 22)}},
-            {'label': {'title': "Grade:", 'font': ('Arial', 22), 'width': 15}, 'entry': {'justify': 'center', 'width': 15, 'font': ('Arial', 22)}},
+            {'label': {'title': "Score:", 'font': ('Arial', 22), 'width': 15}, 'entry': {'justify': 'center', 'width': 15, 'font': ('Arial', 22)}},
         ]
     
     def create_ui(self):
@@ -61,9 +65,20 @@ class StudentGradeWinow(StudentProgram):
             
             label.grid(row=row, column=0, padx=5, pady=10)
             entry.grid(row=row, column=1, padx=5, pady=10)
-            
+        
         button = Button(frame, text='Submit', font=self.__defaul_detail_font, width=10, command=self.submit_grade)
         button.grid(row=row+1, column=0, ipadx=10, pady=10)
+        
+        style = ttk.Style()
+        style.configure("Treeview.Heading", font=self.__default_treeview_header)
+        style.configure("Treeview", font=self.__default_treeview)
+        
+        headers = ['Name', 'Student ID', 'Score', 'Grade']
+        self.treeview = ttk.Treeview(frame, column=headers, show='headings', height=self.__treeview_height)
+        for header in headers:
+            self.treeview.heading(header, text=header)
+            self.treeview.column(header, anchor='center', width=150, minwidth=0)
+        self.treeview.grid(row=row+2, column=0)
 
         window.mainloop()
         
