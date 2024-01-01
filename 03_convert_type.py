@@ -7,8 +7,8 @@ if __name__ == '__main__':
     """
     name = input("Enter value")
     class_name = input("Enter class name")
-    score = int(input("Enter score"))
-    grade = float(input("Enter grade"))
+    score = float(input("Enter score"))
+    grade = input("Enter grade")
     
     # 1.The boolean value is False when the data which is converted is blank or 0
     # 2. The boolean value is True when the data which is coverted is not blank and not 0
