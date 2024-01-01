@@ -5,16 +5,18 @@ if __name__ == '__main__':
     
     if name == '':
         print("Some Entry is not fill in!")
+        quit()
         
     if class_name == '':
         print("Some Entry is not fill in!")
+        quit()
     
-    score_percentage = 0
     if score == '':
         print("Some Entry is not fill in!")
-    else:
-        score = int(score)
-        score_percentage = (score/100) * 100
+        quit()
+    
+    score = int(score)
+    score_percentage = (score/100) * 100
     
     if score >= 80:
         grade = 'A'
